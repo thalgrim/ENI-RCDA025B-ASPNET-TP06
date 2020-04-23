@@ -34,6 +34,7 @@ namespace TP06Module06.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Potentiel = samourai.Force+samourai.Arme.Degats;
             return View(samourai);
         }
 
@@ -41,7 +42,18 @@ namespace TP06Module06.Controllers
         public ActionResult Create()
         {
             SamouraisViewModel vm = new SamouraisViewModel();
-            vm.Armes = db.Armes.ToList();
+            List<Arme> listeArme = db.Armes.ToList();
+            List<Arme> listeArmeSansProprietaire = db.Armes.ToList();
+            List<Samourai> listeSamourai = db.Samourais.ToList();
+            foreach (Samourai samourai in listeSamourai)
+            {
+                if (samourai.Arme != null)
+                {
+                    listeArmeSansProprietaire.Remove(listeArme.FirstOrDefault(x => x.Id == samourai.Arme.Id));
+                }
+            }
+            vm.Armes = listeArmeSansProprietaire;            
+            vm.ArtMartials = db.ArtMartials.ToList();
             return View(vm);
         }
 
@@ -52,18 +64,29 @@ namespace TP06Module06.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SamouraisViewModel vm)
         {
+
+            Samourai samourai = new Samourai();
+            samourai.Nom = vm.Samourai.Nom;
+            samourai.Force = vm.Samourai.Force;
+
             if (ModelState.IsValid)
             {
                 if (vm.IdSelectedArme.HasValue)
                 {
-                    vm.Samourai.Arme = db.Armes.FirstOrDefault(arme => arme.Id == vm.IdSelectedArme.Value);
+                    samourai.Arme = db.Armes.FirstOrDefault(arme => arme.Id == vm.IdSelectedArme.Value);
                 }
 
-                db.Samourais.Add(vm.Samourai);
+                if (vm.IdSelectedArtMartials.Count != 0)
+                {
+                    samourai.ArtMartials = db.ArtMartials.Where(a => vm.IdSelectedArtMartials.Contains(a.Id)).ToList();
+                }
+
+                db.Samourais.Add(samourai);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             vm.Armes = db.Armes.ToList();
+            vm.ArtMartials = db.ArtMartials.ToList();
             return View(vm);
         }
 
@@ -82,6 +105,7 @@ namespace TP06Module06.Controllers
             }
             SamouraisViewModel vm = new SamouraisViewModel();
             vm.Armes = db.Armes.ToList();
+            vm.ArtMartials = db.ArtMartials.ToList();
             vm.Samourai = samourai;
             return View(vm);
         }
@@ -108,10 +132,19 @@ namespace TP06Module06.Controllers
                     samouraidb.Arme = null;
                 }
 
+                if (vm.IdSelectedArtMartials.Count != 0)
+                {
+                    foreach (var item in vm.IdSelectedArtMartials)
+                    {
+                        samouraidb.ArtMartials.Add(db.ArtMartials.FirstOrDefault(artMartial => artMartial.Id == item));
+                    }
+                };
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             vm.Armes = db.Armes.ToList();
+            vm.ArtMartials = db.ArtMartials.ToList();
             return View(vm);
         }
 

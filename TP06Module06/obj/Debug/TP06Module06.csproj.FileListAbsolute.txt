@@ -90,5 +90,5 @@ C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\bin\EntityFramework.
 C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\bin\EntityFramework.SqlServer.dll
 C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\bin\EntityFramework.xml
 C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\bin\EntityFramework.SqlServer.xml
-C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\obj\Debug\TP06Module06.Migrations.premiere.resources
+C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\obj\Debug\TP06Module06.Migrations.initial.resources
 C:\Users\Utilisateur\source\repos\TP06Module06\TP06Module06\obj\Debug\TP06Module06.csproj.GenerateResource.cache

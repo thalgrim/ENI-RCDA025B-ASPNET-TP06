@@ -47,7 +47,7 @@ namespace TP06Module06.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom,Degats")] Arme arme)
+        public ActionResult Create(Arme arme)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace TP06Module06.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nom,Degats")] Arme arme)
+        public ActionResult Edit(Arme arme)
         {
             if (ModelState.IsValid)
             {

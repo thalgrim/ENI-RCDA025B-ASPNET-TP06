@@ -27,14 +27,55 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Arme.Nom)
+            @Html.DisplayNameFor(model => model.Arme)
         </dt>
 
+        @if (Model.Arme != null)
+        {
+            <dd>
+                @Html.DisplayFor(model => model.Arme.Nom)
+            </dd>
+        }
+        else
+        {
+            <dd>
+                <em>Pas d'arme</em>
+            </dd>
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtMartials)
+        </dt>
+
+        @if (Model.ArtMartials.Count > 0)
+        {
+            foreach (var artMartail in Model.ArtMartials)
+            {
+                <dd>
+                    @Html.DisplayFor(modelItem => artMartail.Nom)
+                </dd>
+            }
+        }
+        else
+        {
+            <dd>
+                <em>Pas d'art martiaux</em>
+            </dd>
+        }
+        <dt>
+            Potentiel
+
+        </dt>
         <dd>
-            @Html.DisplayFor(model => model.Arme.Nom)
+            @ViewBag.Potentiel
         </dd>
 
+
+
+
     </dl>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

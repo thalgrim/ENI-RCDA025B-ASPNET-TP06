@@ -127,15 +127,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArmesController.cs" />
+    <Compile Include="Controllers\ArtMartialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SamouraisController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004211251071_premiere.cs" />
-    <Compile Include="Migrations\202004211251071_premiere.Designer.cs">
-      <DependentUpon>202004211251071_premiere.cs</DependentUpon>
+    <Compile Include="Migrations\202004230859135_initial.cs" />
+    <Compile Include="Migrations\202004230859135_initial.Designer.cs">
+      <DependentUpon>202004230859135_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SamouraisViewModel.cs" />
@@ -187,6 +188,11 @@
     <Content Include="Views\Samourais\Details.cshtml" />
     <Content Include="Views\Samourais\Edit.cshtml" />
     <Content Include="Views\Samourais\Index.cshtml" />
+    <Content Include="Views\ArtMartials\Create.cshtml" />
+    <Content Include="Views\ArtMartials\Delete.cshtml" />
+    <Content Include="Views\ArtMartials\Details.cshtml" />
+    <Content Include="Views\ArtMartials\Edit.cshtml" />
+    <Content Include="Views\ArtMartials\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -211,8 +217,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004211251071_premiere.resx">
-      <DependentUpon>202004211251071_premiere.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004230859135_initial.resx">
+      <DependentUpon>202004230859135_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
